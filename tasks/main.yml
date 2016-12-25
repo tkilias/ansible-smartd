@@ -1,6 +1,6 @@
 ---
 - name: install smartmontools
-  apt: pkg=smartmontools state=installed
+  yum: pkg=smartmontools state=installed
 
 # TODO: list disks with ansible facts
 - name: list disks present in the system
