@@ -18,14 +18,14 @@
   when: smart|failed
 
 - name: create smartd configuration file
-  template: src=smartd.conf.j2 dest=/etc/smartd.conf
+  template: src=smartd.conf.j2 dest=/etc/smartmontools/smartd.conf
     owner=root group=root mode=0644
   notify: restart smartd
   when: smart|success
 
 - name: enable smartd on system startup (default file)
   lineinfile: >
-    dest=/etc/default/smartmontools
+    dest=/etc/sysconfig/smartmontools
     regexp="^start_smartd="
     line="start_smartd=yes"
   notify: restart smartd
@@ -33,7 +33,7 @@
 
 - name: pass additional options to smartd on startup (default file)
   lineinfile: >
-    dest=/etc/default/smartmontools
+    dest=/etc/sysconfig/smartmontools
     regexp="^smartd_opts="
     line='smartd_opts="--interval=1800"'
   notify: restart smartd
