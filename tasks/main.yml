@@ -13,10 +13,6 @@
   register: smart
   ignore_errors: True
 
-- name: remove smartmontools
-  yum: pkg=smartmontools state=absent
-  when: smart|failed
-
 - name: create smartd configuration file
   template: src=smartd.conf.j2 dest=/etc/smartmontools/smartd.conf
     owner=root group=root mode=0644
