@@ -14,7 +14,7 @@
   ignore_errors: True
 
 - name: remove smartmontools
-  apt: pkg=smartmontools state=absent
+  yum: pkg=smartmontools state=absent
   when: smart|failed
 
 - name: create smartd configuration file
